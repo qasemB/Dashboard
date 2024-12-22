@@ -1,6 +1,5 @@
-import React, { useState } from "react";
-import { HiMenu } from "react-icons/hi"; // Import the hamburger menu icon
-import { AiOutlineClose, AiOutlineFileText } from "react-icons/ai"; // Import a close icon for toggling
+import React from "react";
+import { AiOutlineFileText } from "react-icons/ai"; // Import a close icon for toggling
 import {
   MdRadioButtonUnchecked,
   MdCropSquare,
@@ -13,28 +12,16 @@ import { FaImage } from "react-icons/fa"; // Image Upload icon
 const Sidebar = ({ isOpen, toggleMenu }) => {
   return (
     <div
-      onClick={toggleMenu}
-      className={`overflow-x-hidden fixed top-0 left-0 h-full border-b bg-gradient-to-t from-gray-400 via-gray-200 to-white shadow-xl bg-white transition-all duration-300 
+      className={`overflow-x-hidden fixed top-0 left-0 h-full border-b bg-gradient-to-t from-gray-400 via-gray-200 to-white shadow-xl bg-white transition-all duration-300 pt-16
             ${isOpen ? "w-64" : "w-20"}`}
     >
-      {/* Hamburger Icon */}
-      <div className="fixed top-16 flex flex-col items-center">
-        {/* <div className="flex w-full">
-          <button className="text-4xl p-2   text-black">
-            {isOpen ? <AiOutlineClose size={26} /> : <HiMenu size={32} />}
-          </button>
-        </div> */}
-
-        {/* Sidebar Content */}
+      <div className="flex flex-col items-center pt-5">
         <ul
-          className={`mt-16  flex gap-5 flex-col space-y-4 text-black`}
+          className={`flex gap-5 flex-col space-y-4 text-black items-center w-full`}
         >
-          <li className="flex flex-col items-start gap-3">
+          <li className="flex flex-col items-start gap-3 cursor-pointer relative hover:hovered">
             <div className="flex flex-nowrap items-center">
-              <div
-                // onClick={toggleMenu}
-                className="flex justify-center items-center flex-wrap w-10 h-10 rounded-lg bg-white"
-              >
+              <div className="flex justify-center items-center flex-wrap w-10 h-10 rounded-lg bg-white">
                 <MdRadioButtonUnchecked className="text-blue-500" />
                 <MdCropSquare className="text-blue-500" />
                 <MdChangeHistory className="text-blue-500" />
@@ -42,8 +29,13 @@ const Sidebar = ({ isOpen, toggleMenu }) => {
               </div>
             </div>
             <span className="font-inter text-sm cursor-pointer">Shape</span>
+            <div className="shape_menu fixed !w-52 h-10 flex justify-between items-center top-[85px] left-16 bg-white z-40 origin-left scale-x-0 transition-all px-2">
+              <MdRadioButtonUnchecked className="text-blue-500 hover:text-blue-700" size={36} />
+              <MdCropSquare className="text-blue-500 hover:text-blue-700"  size={36}/>
+              <MdChangeHistory className="text-blue-500 hover:text-blue-700"  size={36}/>
+            </div>
           </li>
-          <li className="flex flex-col justify-center items-start">
+          <li className="flex flex-col justify-center items-start cursor-pointer">
             <div className="flex flex-col gap-3 text-center ">
               <div className="flex justify-center items-center flex-wrap w-10 h-10 rounded-lg bg-white">
                 <AiOutlineFileText className="text-blue-500" />
@@ -51,7 +43,7 @@ const Sidebar = ({ isOpen, toggleMenu }) => {
               <span className="font-inter text-sm cursor-pointer">Text</span>
             </div>
           </li>
-          <li className="flex flex-col justify-center items-start">
+          <li className="flex flex-col justify-center items-start cursor-pointer">
             <div className="flex flex-col gap-3 text-center ">
               <div className="flex justify-center items-center flex-wrap w-10 h-10 rounded-lg bg-white">
                 <FaImage className="text-blue-500" />
@@ -59,7 +51,7 @@ const Sidebar = ({ isOpen, toggleMenu }) => {
               <span className="font-inter text-sm cursor-pointer">Image</span>
             </div>
           </li>
-          <li className="flex flex-col justify-center items-start">
+          <li className="flex flex-col justify-center items-start cursor-pointer">
             <div className="flex flex-col gap-3 text-center ">
               <div className="flex justify-center items-center flex-wrap w-10 h-10 rounded-lg bg-white">
                 <MdVideoLibrary className="text-blue-500" />
