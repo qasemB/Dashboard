@@ -53,7 +53,7 @@ const Sidebar = ({ isOpen, toggleMenu }) => {
                     </div>
                     <div className='flex flex-col justify-center items-start'>
                         <div className='flex flex-col gap-3 text-center '><div className='flex justify-center items-center flex-wrap w-10 h-10 rounded-lg bg-white'>
-                            <AiOutlineFileText className='text-blue-500'/>
+                            <FaImage className='text-blue-500'/>
                         </div>
                             <li className="font-inter text-sm cursor-pointer">Image</li>
                         </div>
