@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import img from '../img/bg-5.webp'; // Default image
+import MainBoard from '../components/MainBoard';
 
 const Content = ({isOpen}) => {
     const [currentBg, setCurrentBg] = useState(0);
@@ -37,6 +38,9 @@ const Content = ({isOpen}) => {
                         Background {index + 1}
                     </button>
                 ))}
+                <section>
+                    <MainBoard/>
+                </section>
             </div>
         </div>
     );
