@@ -8,8 +8,15 @@ import {
   MdVideoLibrary,
 } from "react-icons/md"; // Other icons
 import { FaImage } from "react-icons/fa"; // Image Upload icon
+import { useCreateShape } from "../hooks/createShape";
+import { IoSaveOutline } from "react-icons/io5";
+import { PiUpload } from "react-icons/pi";
+import { useStoreBoard } from "../hooks/storeBoard";
 
 const Sidebar = ({ isOpen, toggleMenu }) => {
+  const { addCircle, addSquare, addTriangle } = useCreateShape();
+  const { saveCanvas, loadCanvas } = useStoreBoard();
+
   return (
     <div
       className={`overflow-x-hidden fixed top-0 left-0 h-full border-b bg-gradient-to-t from-gray-400 via-gray-200 to-white shadow-xl bg-white transition-all duration-300 pt-16
@@ -30,9 +37,21 @@ const Sidebar = ({ isOpen, toggleMenu }) => {
             </div>
             <span className="font-inter text-sm cursor-pointer">Shape</span>
             <div className="shape_menu fixed !w-52 h-10 flex justify-between items-center top-[85px] left-16 bg-white z-40 origin-left scale-x-0 transition-all px-2">
-              <MdRadioButtonUnchecked className="text-blue-500 hover:text-blue-700" size={36} />
-              <MdCropSquare className="text-blue-500 hover:text-blue-700"  size={36}/>
-              <MdChangeHistory className="text-blue-500 hover:text-blue-700"  size={36}/>
+              <MdRadioButtonUnchecked
+                className="text-blue-500 hover:text-blue-700"
+                size={36}
+                onClick={addCircle}
+              />
+              <MdCropSquare
+                className="text-blue-500 hover:text-blue-700"
+                size={36}
+                onClick={addSquare}
+              />
+              <MdChangeHistory
+                className="text-blue-500 hover:text-blue-700"
+                size={36}
+                onClick={addTriangle}
+              />
             </div>
           </li>
           <li className="flex flex-col justify-center items-start cursor-pointer">
@@ -57,6 +76,18 @@ const Sidebar = ({ isOpen, toggleMenu }) => {
                 <MdVideoLibrary className="text-blue-500" />
               </div>
               <span className="font-inter text-sm cursor-pointer">Video</span>
+            </div>
+          </li>
+          <li className="flex flex-col justify-center items-start cursor-pointer" onClick={saveCanvas}>
+            <div className="flex flex-col gap-3 text-center justify-center items-center">
+              <IoSaveOutline size={24}/>
+              <span className="font-inter text-sm cursor-pointer">Save</span>
+            </div>
+          </li>
+          <li className="flex flex-col justify-center items-start cursor-pointer" onClick={loadCanvas}>
+            <div className="flex flex-col gap-3 text-center justify-center items-center">
+              <PiUpload size={24}/>
+              <span className="font-inter text-sm cursor-pointer">Load</span>
             </div>
           </li>
         </ul>
