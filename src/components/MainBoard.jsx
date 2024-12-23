@@ -24,6 +24,8 @@ const MainBoard = () => {
   //   }
   // }
 
+  
+
   const handleClear = () => {
     if (canvas) canvas.clear();
   };

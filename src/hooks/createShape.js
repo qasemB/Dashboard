@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { BoardContext } from "../context/BoardContext";
-import { Circle, Rect, Triangle } from "fabric";
+import { Circle, IText, Rect, Triangle } from "fabric";
 
 export const useCreateShape = () => {
   const { canvas } = useContext(BoardContext);
@@ -42,9 +42,23 @@ export const useCreateShape = () => {
     }
   };
 
+  const addText = () => {
+    if (canvas) {
+      const text = new IText("Hello World", {
+        left: 250, // موقعیت افقی
+        top: 250, // موقعیت عمودی
+        fontSize: 24, // اندازه فونت
+        fill: "black", // رنگ متن
+        fontFamily: "Arial", // نوع فونت
+      });
+      canvas.add(text);
+    }
+  };
+
   return {
     addCircle,
     addSquare,
     addTriangle,
+    addText
   };
 };

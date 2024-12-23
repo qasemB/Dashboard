@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { AiOutlineFileText } from "react-icons/ai"; // Import a close icon for toggling
 import {
   MdRadioButtonUnchecked,
@@ -12,10 +12,22 @@ import { useCreateShape } from "../hooks/createShape";
 import { IoSaveOutline } from "react-icons/io5";
 import { PiUpload } from "react-icons/pi";
 import { useStoreBoard } from "../hooks/storeBoard";
+import { saveData } from "../utils/saveData";
+import { BoardContext } from "../context/BoardContext";
 
 const Sidebar = ({ isOpen, toggleMenu }) => {
-  const { addCircle, addSquare, addTriangle } = useCreateShape();
-  const { saveCanvas, loadCanvas } = useStoreBoard();
+  const { addCircle, addSquare, addTriangle, addText } = useCreateShape();
+
+  const { screenId, canvas } = useContext(BoardContext);
+
+  const handleSaveData = async () => {
+    try {
+      await saveData(screenId, canvas.toJSON());
+      alert("Saved Successfully...");
+    } catch (error) {
+      alert("Can't Save...");
+    }
+  };
 
   return (
     <div
@@ -54,7 +66,10 @@ const Sidebar = ({ isOpen, toggleMenu }) => {
               />
             </div>
           </li>
-          <li className="flex flex-col justify-center items-start cursor-pointer">
+          <li
+            className="flex flex-col justify-center items-start cursor-pointer"
+            onClick={addText}
+          >
             <div className="flex flex-col gap-3 text-center ">
               <div className="flex justify-center items-center flex-wrap w-10 h-10 rounded-lg bg-white">
                 <AiOutlineFileText className="text-blue-500" />
@@ -78,18 +93,24 @@ const Sidebar = ({ isOpen, toggleMenu }) => {
               <span className="font-inter text-sm cursor-pointer">Video</span>
             </div>
           </li>
-          <li className="flex flex-col justify-center items-start cursor-pointer" onClick={saveCanvas}>
+          <li
+            className="flex flex-col justify-center items-start cursor-pointer"
+            onClick={handleSaveData}
+          >
             <div className="flex flex-col gap-3 text-center justify-center items-center">
-              <IoSaveOutline size={24}/>
+              <IoSaveOutline size={24} />
               <span className="font-inter text-sm cursor-pointer">Save</span>
             </div>
           </li>
-          <li className="flex flex-col justify-center items-start cursor-pointer" onClick={loadCanvas}>
+          {/* <li
+            className="flex flex-col justify-center items-start cursor-pointer"
+            onClick={loadCanvas}
+          >
             <div className="flex flex-col gap-3 text-center justify-center items-center">
-              <PiUpload size={24}/>
+              <PiUpload size={24} />
               <span className="font-inter text-sm cursor-pointer">Load</span>
             </div>
-          </li>
+          </li> */}
         </ul>
       </div>
     </div>
