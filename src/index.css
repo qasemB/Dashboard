@@ -1,4 +1,6 @@
-
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 
 body {
@@ -14,3 +16,9 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+@layer components {
+  .hovered .shape_menu{
+    @apply scale-x-100
+  }
+}
+
