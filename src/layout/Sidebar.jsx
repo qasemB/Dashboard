@@ -14,7 +14,7 @@ import { PiUpload } from "react-icons/pi";
 import { useStoreBoard } from "../hooks/storeBoard";
 
 const Sidebar = ({ isOpen, toggleMenu }) => {
-  const { addCircle, addSquare, addTriangle } = useCreateShape();
+  const { addCircle, addSquare, addTriangle, addText } = useCreateShape();
   const { saveCanvas, loadCanvas } = useStoreBoard();
 
   return (
@@ -54,7 +54,7 @@ const Sidebar = ({ isOpen, toggleMenu }) => {
               />
             </div>
           </li>
-          <li className="flex flex-col justify-center items-start cursor-pointer">
+          <li className="flex flex-col justify-center items-start cursor-pointer" onClick={addText}>
             <div className="flex flex-col gap-3 text-center ">
               <div className="flex justify-center items-center flex-wrap w-10 h-10 rounded-lg bg-white">
                 <AiOutlineFileText className="text-blue-500" />
