@@ -1,15 +1,30 @@
-const { Canvas } = require("fabric");
-const { createContext, useState } = require("react");
+import { generateRandomSixDigitNumber } from "../utils/codeUtils";
 
-export const BoardContext = createContext({ canvas: new Canvas(), setCanvas: () => {} });
+const { Canvas } = require("fabric");
+const { createContext, useState, useEffect } = require("react");
+
+export const BoardContext = createContext({
+  canvas: new Canvas(),
+  setCanvas: () => {},
+  screenId: "",
+  setScreenId: () => {},
+});
 
 const BoardContextProvider = ({ children }) => {
   const [canvas, setCanvas] = useState(null);
+  const [screenId, setScreenId] = useState("");
+
+  useEffect(() => {
+    setScreenId(generateRandomSixDigitNumber());
+  }, []);
+
   return (
     <BoardContext.Provider
       value={{
         canvas,
+        screenId,
         setCanvas,
+        setScreenId,
       }}
     >
       {children}
