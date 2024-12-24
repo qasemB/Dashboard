@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { BoardContext } from "../context/BoardContext";
-import { Circle, IText, Rect, Triangle } from "fabric";
+import { Circle, FabricImage, IText, Rect, Triangle } from "fabric";
 
 export const useCreateShape = () => {
   const { canvas } = useContext(BoardContext);
@@ -44,7 +44,7 @@ export const useCreateShape = () => {
 
   const addText = () => {
     if (canvas) {
-      const text = new IText("Hello World", {
+      const text = new IText("Your paragraph text...", {
         left: 250, // موقعیت افقی
         top: 250, // موقعیت عمودی
         fontSize: 24, // اندازه فونت
@@ -55,10 +55,17 @@ export const useCreateShape = () => {
     }
   };
 
+  const addImage = () => {
+    if (canvas) {
+      
+    }
+  };
+
   return {
     addCircle,
     addSquare,
     addTriangle,
-    addText
+    addText,
+    addImage
   };
 };

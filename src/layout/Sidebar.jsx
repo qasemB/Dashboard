@@ -16,7 +16,7 @@ import { saveData } from "../utils/saveData";
 import { BoardContext } from "../context/BoardContext";
 
 const Sidebar = ({ isOpen, toggleMenu }) => {
-  const { addCircle, addSquare, addTriangle, addText } = useCreateShape();
+  const { addCircle, addSquare, addTriangle, addText, addImage } = useCreateShape();
 
   const { screenId, canvas } = useContext(BoardContext);
 
@@ -77,7 +77,7 @@ const Sidebar = ({ isOpen, toggleMenu }) => {
               <span className="font-inter text-sm cursor-pointer">Text</span>
             </div>
           </li>
-          <li className="flex flex-col justify-center items-start cursor-pointer">
+          <li className="flex flex-col justify-center items-start cursor-pointer" onClick={addImage}>
             <div className="flex flex-col gap-3 text-center ">
               <div className="flex justify-center items-center flex-wrap w-10 h-10 rounded-lg bg-white">
                 <FaImage className="text-blue-500" />
